@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Chez Barney's Burger</title>
+    <!-- Define the viewport and heigh=1 prevent bugs on iOS 7 -->
+    <meta name="viewport" content="width=device-width, height=0, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <script>
+        // Define if you are on desktop or mobile
+        var isTouch = !!('ontouchstart' in window);
+
+        // Emulate the click for mobile
+        var eventName = (isTouch) ? 'touchstart' : 'click';
+    </script>
+</head>
+<!-- ontouchstart="" prevent the 300ms bug (see http://www.html5rocks.com/en/mobile/touchandmouse/?redirect_from_locale=fr for informations) -->
+<body ontouchstart="" data-page="home">
+<main id="wrapper"></main>
+<!--<main id="wrapper"></main>-->
+<!-- Include jQuery 2.0.3 and Kiwapp main library -->
+<script src="scripts/vendor.min.js"></script>
+<!-- Include the basic application "framework" -->
+<script src="scripts/kiwappbasicapp.js"></script>
+<script>
+
+    // Custom detection for our device
+    if(navigator.userAgent.indexOf('Android') > -1 && navigator.userAgent.indexOf('CM-FX6') > -1) {
+            // We will add a class bento-widthxheigth
+            document.body.classList.add('bento-'+window.innerWidth+"x"+window.innerHeight);
+    }
+
+    var viewportWidth  = document.documentElement.clientWidth
+        , viewportHeight = document.documentElement.clientHeight
+
+    // We will add a class bento-widthxheigth
+    document.body.classList.add("size-"+viewportWidth+"x"+viewportHeight);
+
+    // Init the delay before return to home.
+    TIMEOUT_BEFORE_HOME = 50;
+
+    initParse();
+
+</script>
+</body>
+</html>

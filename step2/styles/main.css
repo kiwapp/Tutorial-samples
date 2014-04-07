@@ -1,0 +1,230 @@
+@font-face {
+    font-family: 'GearedSlabBold';
+    src: url('../assets/fonts/GearedSlab-Bold.ttf');
+}
+@font-face {
+    font-family: 'GearedSlabExtraBold';
+    src: url('../assets/fonts/GearedSlab-Extrabold.ttf');
+}
+
+body {
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-size: 16px;
+    -webkit-tap-highlight-color:transparent !important;
+    -webkit-user-select:none
+}
+
+#wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative; overflow: hidden}
+
+[class^="page-"], #gameform {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: 100% 100%
+}
+.page-index {background-image: url('../assets/images/background-home.jpg')}
+.page-formulaire {background-image: url('../assets/images/background-form.png.jpg')}
+.page-game {background-image: url('../assets/images/background-jeu-1.jpg')}
+.page-gain-burger {background-image: url('../assets/images/background-burger.jpg')}
+.page-gain-freemeal {background-image: url('../assets/images/background-freemeal.jpg')}
+.page-gain-dessert {background-image: url('../assets/images/background-dessert.jpg')}
+.page-lost {background-image: url('../assets/images/background-sorry.jpg')}
+.page-about-kiwapp {background-image: url('../assets/images/tuto.jpg')}
+
+
+[class^="btn-"] {
+    display: block;
+    max-width: 360px;
+    width: 13rem;
+    height: 5rem;
+    border: 0;
+    background: url('../assets/images/play-form.png');
+    background-size: 13rem;
+    background-repeat: no-repeat;
+    text-indent: -9999px
+}
+
+[class^="btn-"]:active,
+[class^="btn-"]:focus {background-image: url('../assets/images/play-form-hover.png')}
+
+.btn-next {background-image: url('../assets/images/next.png')}
+.btn-next:active,
+.btn-next:focus {background-image: url('../assets/images/next-hover.png')}
+
+.btn-index, .btn-next {
+    position: absolute;
+    right: 20%;
+    bottom: 25%
+}
+.bento-1920x1080 .btn-index{
+    right: 24%;
+}
+
+.page-lost .btn-next {
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+.back-btn {
+    position: absolute;
+    top: 14.5%;
+    left: 10%;
+    max-width: 140px;
+    width: 6rem;
+    height: 3rem;
+    border: 0;
+    background: url('../assets/images/back.png') no-repeat;
+    background-size: 6rem;
+    text-indent: -9999px;
+    z-index: 2000;
+}
+.android .back-btn {top: 14%}
+.bento-1920x1080 .back-btn{
+    top: 15.7%
+}
+.size-1280x672 .back-btn{
+    top: 14.2%
+}
+
+.back-btn:active, .back-btn:focus {background-image: url('../assets/images/back-hover.png')}
+
+.page-formulaire form {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    margin: 15rem auto;
+    width: 85%;
+    height: 35%
+}
+.ipad .page-formulaire form {margin-top : 11rem}
+.android .page-formulaire form {margin-top : 11rem}
+.bento-1920x1080 .page-formulaire form {margin-top : 23.1%;}
+.size-1280x672 .page-formulaire form {margin-top : 10.1rem}
+
+.field {
+    position: relative;
+    float: left;
+    margin-bottom: 2%;
+    width: 48%;
+    height: 17%
+}
+
+.ipad .field {margin-bottom:2.5%}
+
+.field label {
+    position: absolute;
+    top: 37%;
+    left: 13%;
+    display: inline-block;
+    width: 20%;
+    color: #09c;
+    vertical-align: bottom;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-family: 'GearedSlabExtraBold'
+}
+
+.ipad .field label {left: 0;width: auto}
+
+.field input {
+    position: absolute;
+    top: 0;
+    right: 10%;
+    margin-top: 1rem;
+    padding: 0.4rem;
+    width: 50%;
+    color: #09c;
+    border: 0;
+    background: transparent;
+    vertical-align: top;
+    font-family: 'GearedSlabBold';
+    font-size: 1.2rem
+}
+.field:nth-of-type(even) {margin-left: 2%}
+.field:nth-of-type(even) label {left: 23%}
+.field:nth-of-type(even) input {left: 50%}
+
+.ipad .field:nth-of-type(even) label {left: 11%}
+.android .field:nth-of-type(even) label {left: 26%}
+.android label {width: 30%; top: 70%}
+.bento-1920x1080 .field input {
+    margin-top: 1.7rem;
+    right: 12%;
+}
+.size-1280x672 .field input {
+    margin-top: 1.5rem;
+    right: 11%;
+}
+.field-optin {
+    position:relative;
+    margin-top: .1rem;
+    width: 100%
+}
+.field-optin label {
+    position: static;
+    width: 100%;
+    height: 53px;
+    text-indent: 4rem;
+    text-transform: lowercase;
+    font-size: 1.3rem;
+    line-height: 3.7;
+    font-family: 'GearedSlabBold'
+}
+
+.field-optin label:first-letter {text-transform: uppercase}
+
+.field-optin label::before{
+    position: absolute;
+    top: 0.85rem;
+    left: 0;
+    z-index: 10;
+    display: block;
+    width: 55px;
+    height: 53px;
+    background: url('../assets/images/check-uncheck.png') -6px -73px;
+    content: '';
+    -webkit-transform: scale(0.6)
+}
+
+
+
+.field-optin input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55px;
+    height: 53px;
+    opacity:0
+}
+
+.field-optin input:checked + label::before {background-position: -6px -7px}
+
+.btn-formulaire {margin: 0 auto; -webkit-transform: scale(.9)}
+
+canvas {
+    position: absolute;
+    top: 39%;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+.name-shop{
+    text-transform: capitalize;
+}

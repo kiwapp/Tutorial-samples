@@ -1,0 +1,57 @@
+<button class="open-page back-btn" type="button" data-page="formulaire">Back</button>
+<div class="page-game" id="scratchcard"></div>
+<script>
+
+    // Init the scracth card plugin
+    var widthRatio  = Math.round(307 * (window.innerWidth / 1024)),
+        heightRatio = Math.round(314 * ( window.innerHeight / 768));
+    var scracth = new ScratchCard(document.getElementById('scratchcard'),{
+      "picture" : [
+          {
+              "path" : "assets/images",
+              "file": "scratch-freemeal.png",
+              "luck" : 25,
+              "event" : 'win',
+              "details" : "freemeal"
+          },{
+              "path" : "assets/images",
+              "file": "scratch-burger.png",
+              "luck" : 25,
+              "event" : 'win',
+              "details" : "burger"
+          },{
+              "path" : "assets/images",
+              "file": "scratch-dessert.png",
+              "luck" : 25,
+              "event" : 'win',
+              "details" : "dessert"
+          },{
+              "path" : "assets/images",
+              "file": "scratch-lost.png",
+              "luck" : 25,
+              "event" : 'lost',
+              "details" : "lost"
+          }
+      ],
+      "foreground" : {
+          "path" : "assets/images",
+          "file" : "scratch-here.png"
+      },
+      "minCompletion" : 85,
+      "width" : widthRatio,
+      "height" : heightRatio
+    });
+
+
+    // Detect if you win the game. Opt parameters is the key details of an image JSON
+    scracth.on('win', function(opt) {
+        // Open a page after a delay of 3s, it's the page scracth-{custom-name}
+        openPageAfterDelay('scratch-'+opt,1);
+    });
+
+    // Detect if you lsot the game. Opt parameters is the key details of an image JSON
+    scracth.on('lost', function(opt) {
+        // Open a page after a delay of 3s, it's the page scracth-{custom-name}
+        openPageAfterDelay('scratch-'+opt,1);
+    });
+</script>

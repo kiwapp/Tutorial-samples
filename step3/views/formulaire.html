@@ -1,0 +1,87 @@
+<div class="page-formulaire">
+    <button class="open-page back-btn" type="button" data-page="home">Back</button>
+    <form id="formbeforegame" onsubmit="return false;">
+        <div class="field">
+            <label for="name">Last name</label>
+            <input name="name" id="name" type="text" placeholder="" />
+        </div>
+
+    <div class="field">
+        <label for="surname">First name</label>
+        <input name="surname" type="text" id="surname" placeholder="" />
+    </div>
+
+    <div class="field">
+        <label for="email">e-mail</label>
+        <input name="email" id="email" type="email" placeholder="" />
+    </div>
+
+    <div class="field">
+        <label for="phone">phone</label>
+        <input name="phone" id="phone" type="tel" placeholder="" />
+    </div>
+
+    <div class="field field-optin">
+        <input name="optin" type="checkbox" id="optin" value="" />
+        <label for="optin">Would you like to receive special deals and offers from <span class="name-shop">Chez Barney's?</span></label>
+    </div>
+
+    <button type="button" id="playtoform" class="btn-formulaire">Play</button>
+
+    </form>
+</div>
+<script>
+
+    // Detect the click on the button play
+    // It will parse the form and record it
+    $('#playtoform').click(function() {
+
+        var inputs        = $('#formbeforegame').serializeArray(),
+            checkboxValue = $('#optin').is(':checked'),
+            data          = {};
+
+        // Build each input's value into a JSON {key:value}
+        inputs.forEach(function(input,i) {
+            data[input.name] = input.value;
+        });
+
+        data['optin'] = checkboxValue;
+
+        Kiwapp.session().store(data).send();
+
+        $.ajax({
+            headers: {
+                "X-Parse-REST-API-Key"   : PARSE_APP_KEY,
+                "X-Parse-Application-Id" : PARSE_APP_ID,
+                "Content-Type"           : "application/json"
+            },
+            url    : "https://api.parse.com/1/classes/" + PARSE_APP_NAME  + "/" ,
+            method : "POST",
+            data   : JSON.stringify(data)
+        })
+            .then(function() {
+                alert("it works !");
+            })
+            .fail(function() {
+                alert("It doesn't work !");
+
+                // Save data to our offlines entries, in order to send them later
+                Kiwapp.session().store(json,{
+                    url     : "https://api.parse.com/1/classes/" + PARSE_APP_NAME  + "/" ,
+                    headers : {
+                        "X-Parse-REST-API-Key"   : PARSE_APP_KEY,
+                        "X-Parse-Application-Id" : PARSE_APP_ID,
+                        "Content-Type"           : "application/json"
+                    },
+                    method  : "POST"
+                }).send();
+            })
+            .always(function() {
+                // Then we can open the page game
+                openPage('game');
+            });
+
+    });
+
+
+</script>
