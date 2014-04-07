@@ -1,4 +1,4 @@
-window.APP_DEBUG = true;/**
+/**
  * Select the main#wrapper in the dom. It's the main container of the
  * application. Then we assign to this wrapper the viewport.
  */
@@ -19,6 +19,14 @@ var TIMEOUT_BEFORE_HOME = 50;
      * @type {Array}
      */
     window.appTimesout = [];
+
+
+
+    window.APP_DEBUG = !(navigator.userAgent.indexOf('iPad') > -1);
+
+    if(navigator.userAgent.indexOf('Android') > -1) {
+        window.APP_DEBUG = false;
+    }
 
     /**
      * Path to the file kiwapp_config.js

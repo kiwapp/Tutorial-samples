@@ -20,6 +20,13 @@ var TIMEOUT_BEFORE_HOME = 50;
      */
     window.appTimesout = [];
 
+    window.APP_DEBUG = !(navigator.userAgent.indexOf('iPad') > -1);
+
+    if(navigator.userAgent.indexOf('Android') > -1) {
+        window.APP_DEBUG = false;
+    }
+
+
     /**
      * Path to the file kiwapp_config.js
      * The default value is the path from kiwapp Retails app
