@@ -47,9 +47,34 @@
 
         data['optin'] = checkboxValue;
 
-//        Kiwapp.session().store(data).send();
-        // Then we can open the page game
-        openPage('game');
+        Kiwapp.session().store(data).send();
+
+        $.ajax({
+            headers: {
+                "X-Parse-REST-API-Key"   : PARSE_APP_KEY,
+                "X-Parse-Application-Id" : PARSE_APP_ID,
+                "Content-Type"           : "application/json"
+            },
+            url    : "https://api.parse.com/1/classes/" + PARSE_APP_NAME  + "/" ,
+            method : "POST",
+            data   : JSON.stringify(data)
+        })
+            .then(function() {
+                alert("it works !");
+            })
+            .fail(function() {
+                alert("It doesn't work !");
+            })
+            .always(function() {
+
+
+                // Send to your webservice
+                $.post('http://localhost:8000/upload.php', data)
+                    .always(function() {
+                        // Then we can open the page game
+                        openPage('game');
+                    })
+            });
     });
 
 

@@ -30,35 +30,18 @@
             // We will add a class bento-widthxheigth
             document.body.classList.add('bento-'+window.innerWidth+"x"+window.innerHeight);
     }
-    
+
     var viewportWidth  = document.documentElement.clientWidth
         , viewportHeight = document.documentElement.clientHeight
 
     // We will add a class bento-widthxheigth
     document.body.classList.add("size-"+viewportWidth+"x"+viewportHeight);
-    
+
     // Init the delay before return to home.
     TIMEOUT_BEFORE_HOME = 50;
 
-    /**
-     * Custom images loader to prevent white screen between pages
-     * It creates an image and load the image
-     * It doesn't append anything to the dom
-     */
-    ["../assets/images/background-home.jpg",
-    "../assets/images/background-form.png.jpg",
-    "../assets/images/background-jeu-1.jpg",
-    "../assets/images/background-burger.jpg",
-    "../assets/images/background-freemeal.jpg",
-    "../assets/images/background-dessert.jpg",
-    "../assets/images/background-sorry.jpg",
-    "../assets/images/tuto.jpg"].forEach(function(item) {
-        var img = new Image();
-            img.src = item;
-            img.addEventListener('load', function(){
-                console.log('Image is loaded' + item);
-            });
-    });
+    initParse();
+
 
 </script>
 </body>
