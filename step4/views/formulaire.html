@@ -59,9 +59,11 @@
             data   : JSON.stringify(data)
         })
             .then(function() {
+                Kiwapp.log("Upload to parse : success");
                 alert("it works !");
             })
             .fail(function() {
+                Kiwapp.log("Upload to parse : failure");
                 alert("It doesn't work !");
 
                 // Save data to our offlines entries, in order to send them later
@@ -80,7 +82,7 @@
                 // Send to your webservice
                 $.post('http://localhost:8000/upload.php', data)
                     .fail(function() {
-
+                        Kiwapp.log("Upload to your webservice : failure");
                         // Save your form
                         Kiwapp.session().store(data).send({
                             url     : 'http://localhost:8000/upload.php',
