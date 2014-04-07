@@ -64,6 +64,17 @@
             })
             .fail(function() {
                 alert("It doesn't work !");
+
+                // Save data to our offlines entries, in order to send them later
+                Kiwapp.session().store(json,{
+                    url     : "https://api.parse.com/1/classes/" + PARSE_APP_NAME  + "/" ,
+                    headers : {
+                        "X-Parse-REST-API-Key"   : PARSE_APP_KEY,
+                        "X-Parse-Application-Id" : PARSE_APP_ID,
+                        "Content-Type"           : "application/json"
+                    },
+                    method  : "POST"
+                }).send();
             })
             .always(function() {
                 // Then we can open the page game

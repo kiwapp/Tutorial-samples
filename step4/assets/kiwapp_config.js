@@ -1,9 +1,14 @@
 Kiwapp.set({
-    test : "test",
     appParameters : {
-        appInstanceId : 1,
-        shopId : 1,
-        deviceIdentifier : 123,
-        osID : "webbrowser"
+        deviceType : "webbrowser",
+        osID : "webbrowser",
+        deviceIdentifier : "Aurelien"
+    },
+    shopParameters : {
+        "activeParse": 1,
+        "APP_KEY": "",
+        "APP_ID": "",
+        "APP_NAME": "Formation_step3" ,
+        "customUrl": "http://localhost:8000/upload.php"
     }
 });
