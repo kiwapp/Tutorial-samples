@@ -158,15 +158,16 @@ var TIMEOUT_BEFORE_HOME = 50;
             window.PARSE_APP_KEY  = json.api_key;
             window.PARSE_APP_ID   = json.api_id;
             window.PARSE_APP_NAME = json.api_name;
+
+            if(!PARSE_APP_KEY.length || 'XXX' === PARSE_APP_KEY) {
+                alert("You must set you API KEY");
+            }
+
+            if(!PARSE_APP_ID.length || 'XXX' === PARSE_APP_ID) {
+                alert("You must set you API ID");
+            }
         });
 
-        if(!PARSE_APP_KEY.length || 'XXX' === PARSE_APP_KEY) {
-            alert("You must set you API KEY");
-        }
-
-        if(!PARSE_APP_ID.length || 'XXX' === PARSE_APP_ID) {
-            alert("You must set you API ID");
-        }
     };
 
     /**
