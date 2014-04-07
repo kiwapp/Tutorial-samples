@@ -1,10 +1,10 @@
 {
   "app_info": {
-    "name": "Burger Formation step 5",
+    "name": "Burger Tutorial",
     "author": "Aurélien",
-    "codename": "1.0",
+    "codename": "5.0",
     "author_email": "aurelien@procheo.fr",
-    "description": "Ma première webapp avec kiwapp configurable"
+    "description": "Step: 5 My first webapp with Kiwapp Manager"
   },
   "config": {
     "typedef": {},

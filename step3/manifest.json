@@ -1,9 +1,9 @@
 {
   "app_info": {
-    "name": "Burger Formation step 3",
+    "name": "Burger Tutorial",
     "author": "Aurélien",
-    "codename": "1.0",
+    "codename": "3.0",
     "author_email": "aurelien@procheo.fr",
-    "description": "Ma première webapp avec kiwapp et parse"
+    "description": "Step: 3 My first webapp with kiwapp.js and parse"
   }
 }
