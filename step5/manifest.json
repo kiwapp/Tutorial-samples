@@ -1,0 +1,47 @@
+{
+  "app_info": {
+    "name": "Burger Formation step 5",
+    "author": "Aurélien",
+    "codename": "1.0",
+    "author_email": "aurelien@procheo.fr",
+    "description": "Ma première webapp avec kiwapp configurable"
+  },
+  "config": {
+    "typedef": {},
+    "fields": {
+      "activeParse": {
+        "kw_type": "bool",
+        "label": "Use Parse Saas service to save your forms",
+        "mandatory": false
+      },
+      "APP_KEY": {
+        "kw_type": "string",
+        "mandatory": false,
+        "label": "The X-Parse-REST-API-Key use with Parse for the form submission.",
+        "field_label": "Write your Parse X-Parse-REST-API-Key."
+      },
+      "APP_ID": {
+        "kw_type": "string",
+        "mandatory": false,
+        "label": "The webservice X-Parse-Application-Id use with Parse for the form submission.",
+        "field_label": "Choose your Parse X-Parse-Application-Id."
+      },
+      "APP_NAME": {
+        "kw_type": "string",
+        "mandatory": false,
+        "label": "The Classe Parse webservice Name for the form submission.",
+        "field_label": "Write your Parse url."
+      },
+      "customUrl": {
+        "kw_type": "string",
+        "label": "Custom URL to send your forms",
+        "field_label": "Choose your webservice url.",
+        "mandatory": false
+      }
+    },
+    "defaultConfig": {
+      "activeParse": true
+    }
+  }
+
+}

@@ -35,19 +35,6 @@
     // Detect the click on the button play
     // It will parse the form and record it
     $('#playtoform').click(function() {
-
-        var inputs        = $('#formbeforegame').serializeArray(),
-            checkboxValue = $('#optin').is(':checked'),
-            data          = {};
-
-        // Build each input's value into a JSON {key:value}
-        inputs.forEach(function(input,i) {
-            data[input.name] = input.value;
-        });
-
-        data['optin'] = checkboxValue;
-
-       Kiwapp.session().store(data).send();
         // Then we can open the page game
         openPage('game');
     });

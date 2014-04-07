@@ -47,7 +47,8 @@
 
         data['optin'] = checkboxValue;
 
-        // Send data to parse
+        Kiwapp.session().store(data).send();
+
         $.ajax({
             headers: {
                 "X-Parse-REST-API-Key"   : PARSE_APP_KEY,
@@ -76,22 +77,10 @@
                 }).send();
             })
             .always(function() {
-
-                // Send to your webservice
-                $.post('http://localhost:8000/upload.php', data)
-                    .fail(function() {
-
-                        // Save your form
-                        Kiwapp.session().store(data).send({
-                            url     : 'http://localhost:8000/upload.php',
-                            method  : "POST"
-                        });
-                    })
-                    .always(function() {
-                        // Then we can open the page game
-                        openPage('game');
-                    })
+                // Then we can open the page game
+                openPage('game');
             });
+
     });
 
 

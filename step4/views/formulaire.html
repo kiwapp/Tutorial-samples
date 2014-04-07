@@ -47,29 +47,51 @@
 
         data['optin'] = checkboxValue;
 
+        // Send data to parse
+        $.ajax({
+            headers: {
+                "X-Parse-REST-API-Key"   : PARSE_APP_KEY,
+                "X-Parse-Application-Id" : PARSE_APP_ID,
+                "Content-Type"           : "application/json"
+            },
+            url    : "https://api.parse.com/1/classes/" + PARSE_APP_NAME  + "/" ,
+            method : "POST",
+            data   : JSON.stringify(data)
+        })
+            .then(function() {
+                alert("it works !");
+            })
+            .fail(function() {
+                alert("It doesn't work !");
 
-        var appConfig = Kiwapp.get('shopParameters');
+                // Save data to our offlines entries, in order to send them later
+                Kiwapp.session().store(json,{
+                    url     : "https://api.parse.com/1/classes/" + PARSE_APP_NAME  + "/" ,
+                    headers : {
+                        "X-Parse-REST-API-Key"   : PARSE_APP_KEY,
+                        "X-Parse-Application-Id" : PARSE_APP_ID,
+                        "Content-Type"           : "application/json"
+                    },
+                    method  : "POST"
+                }).send();
+            })
+            .always(function() {
 
-        // Check if we have to send our data to Parse
-        if(~~appConfig.activeParse) {
-            new ParseConnector(appConfig.APP_KEY, appConfig.APP_ID)
-                .app(appConfig.APP_NAME)
-                .send(data);
-        }
+                // Send to your webservice
+                $.post('http://localhost:8000/upload.php', data)
+                    .fail(function() {
 
-        // Check if you have set a custom url in order to send to your own webservice
-        if(appConfig.customUrl.length) {
-            $.post(appConfig.customUrl, data)
-                .fail(function() {
-                    Kiwapp.session().store(data).send({
-                        url    : appConfig.customUrl,
-                        method : "POST"
-                    });
-                })
-        }
-
-        // Then we can open the page game
-        openPage('game');
+                        // Save your form
+                        Kiwapp.session().store(data).send({
+                            url     : 'http://localhost:8000/upload.php',
+                            method  : "POST"
+                        });
+                    })
+                    .always(function() {
+                        // Then we can open the page game
+                        openPage('game');
+                    })
+            });
     });
 
 

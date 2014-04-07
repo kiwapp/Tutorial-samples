@@ -25,14 +25,11 @@ var TIMEOUT_BEFORE_HOME = 50;
      * The default value is the path from kiwapp Retails app
      * @type {String}
      */
-    var kiwappConfigUrl = "../config/kiwapp_config.js";
 
 
     // If debug mode is active, allow the load inside a browser
     if(window.APP_DEBUG) {
-        kiwappConfigUrl = "assets/kiwapp_config.js";
         TIMEOUT_BEFORE_HOME = 5000;
-
     }
 
     /**
@@ -80,12 +77,9 @@ var TIMEOUT_BEFORE_HOME = 50;
 
         if('home' !== page) {
             console.log('[App@PageOpen] '+ page);
-            Kiwapp.stats().page(page);
             resetTimeout();
 
             openPageAfterDelay('home',TIMEOUT_BEFORE_HOME, function() {
-                Kiwapp.stats().page('home');
-                Kiwapp.session().end();
                 console.log('[App@Kiwapp] close session');
             });
         }
@@ -96,11 +90,7 @@ var TIMEOUT_BEFORE_HOME = 50;
      * It creates a new session for a user
      * @param  {String} page The page name
      */
-    var beforeOpen = function(page) {
-        if('home' === page) {
-            Kiwapp.session().start();
-        }
-    };
+    var beforeOpen = function(page) {};
 
     /**
      * Your public helper to open a page from another.
@@ -165,22 +155,10 @@ var TIMEOUT_BEFORE_HOME = 50;
         openPage(dest);
     });
 
-    /**
-     * Load the application from the kiwapp configuration
-     * Your body must have a data-page attribute
-     */
-    Kiwapp(kiwappConfigUrl, function(){
-        // Trigger an event to the webview to launch the application
-
-        Kiwapp.ready();
-        // // Allow only landscape mode
-        Kiwapp.driver().trigger('callApp', {
-            call: 'ipadPath',
-            data: {
-                "orientation" : 10
-            }
-        });
-
+    // Wait for the dom to be ready
+    $(document).ready(function() {
         openPage(document.body.getAttribute('data-page'));
     });
+
+
 })();
