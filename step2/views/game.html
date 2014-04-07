@@ -48,12 +48,16 @@
 
         // Record an event for the statistics
         Kiwapp.stats().event('winner-' + opt);
+
+        Kiwapp.log("You win a "+ opt);
         // Open a page after a delay of 3s, it's the page scracth-{custom-name}
         openPageAfterDelay('scratch-'+opt,1);
     });
 
     // Detect if you lsot the game. Opt parameters is the key details of an image JSON
     scracth.on('lost', function(opt) {
+
+        Kiwapp.log("You lost");
 
         // Record an event for the statistics
         Kiwapp.stats().event('lost');
