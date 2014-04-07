@@ -144,6 +144,18 @@ var TIMEOUT_BEFORE_HOME = 50;
     };
 
     /**
+     * Load the parse configuration
+     * @return {void}
+     */
+    window.initParse = function() {
+        $.getJSON('parse.json', function(json) {
+            window.PARSE_APP_KEY  = json.api_key;
+            window.PARSE_APP_ID   = json.api_id;
+            window.PARSE_APP_NAME = json.api_name;
+        });
+    };
+
+    /**
      * Main helper to auto open a page when you click on a button or anything else
      * with the classe open-page and this attribute :
      *     - data-page = the page to open
